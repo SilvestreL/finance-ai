@@ -24,7 +24,7 @@ model Transaction {
   date DateTime
   created DateTime @default(now())
   updateAt DateTime @updatedAt
-
+  userId String
 
 }
 
