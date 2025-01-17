@@ -64,12 +64,18 @@ export const transactionsColumns: ColumnDef<Transaction>[] = [
     header: "Ações",
     cell: ({ row: { original: transaction } }) => {
       return (
-        <div className="space-x-1">
-          <EditTransactionButton transaction={transaction} />
-          <Button variant="ghost" size="icon" className="text-muted-foreground">
-            <TrashIcon />
-          </Button>
-        </div>
+        <>
+          <div className="space-x-1">
+            <EditTransactionButton transaction={transaction} />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground"
+            >
+              <TrashIcon />
+            </Button>
+          </div>
+        </>
       );
     },
   },
