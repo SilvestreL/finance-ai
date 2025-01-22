@@ -7,10 +7,19 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 const TransactionsPage = async () => {
-  // acessar transacoes do meu db
-  const transactions = await db.transaction.findMany({});
-  const { userId } = auth();
-  if (!userId) return redirect("/login");
+  const { userId } = await auth();
+  if (!userId) {
+    redirect("/login");
+  }
+  const transactions = await db.transaction.findMany({
+    where: {
+      userId,
+    },
+    orderBy: {
+      date: "desc",
+    },
+  });
+
   return (
     <>
       <Navbar />
