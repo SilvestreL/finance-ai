@@ -7,6 +7,7 @@ import TransactionsPieChart from "./{home}/_components/transactions-pie-chart";
 import getDashBoard from "./_data/get-dashboard";
 import ExpensesPerCategory from "./{home}/_components/expenses-per-category";
 import LastTransactions from "./{home}/_components/last-transactions";
+import { isMatch } from "date-fns";
 
 interface HomeProps {
   searchParams: {
@@ -20,9 +21,9 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
     redirect("/login");
   }
 
-  const monthIsInvalid = !month || !/^(0[1-9]|1[0-2])$/.test(month);
+  const monthIsInvalid = !month || !isMatch(month, "MM");
   if (monthIsInvalid) {
-    redirect(`?month=01`);
+    redirect(`?month=${new Date().getMonth() + 1}`);
   }
   const dashboard = await getDashBoard(month);
   return (
