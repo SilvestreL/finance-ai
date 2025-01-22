@@ -2,24 +2,17 @@
 
 import { Pie, PieChart } from "recharts";
 
-import { Card, CardContent } from "../.././_components/ui/card";
+import { Card, CardContent } from "@/app/_components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../.././_components/ui/chart";
+} from "@/app/_components/ui/chart";
 import { TransactionType } from "@prisma/client";
 import { TransactionPercentagePerType } from "@/app/_data/get-dashboard/types";
 import { PiggyBankIcon, TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 import PercentageItem from "./percentage-item";
-
-interface TransactionsPieChartProps {
-  depositsTotal: number;
-  investmentsTotal: number;
-  expensesTotal: number;
-  typesPercentage: TransactionPercentagePerType;
-}
 
 const chartConfig = {
   [TransactionType.INVESTMENT]: {
@@ -35,6 +28,13 @@ const chartConfig = {
     color: "#E93030",
   },
 } satisfies ChartConfig;
+
+interface TransactionsPieChartProps {
+  typesPercentage: TransactionPercentagePerType;
+  depositsTotal: number;
+  investmentsTotal: number;
+  expensesTotal: number;
+}
 
 const TransactionsPieChart = ({
   depositsTotal,
@@ -59,9 +59,8 @@ const TransactionsPieChart = ({
       fill: "#FFFFFF",
     },
   ];
-
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col p-6">
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
@@ -75,11 +74,12 @@ const TransactionsPieChart = ({
             <Pie
               data={chartData}
               dataKey="amount"
-              nameKey="type "
+              nameKey="type"
               innerRadius={60}
             />
           </PieChart>
         </ChartContainer>
+
         <div className="space-y-3">
           <PercentageItem
             icon={<TrendingUpIcon size={16} className="text-primary" />}
@@ -101,4 +101,5 @@ const TransactionsPieChart = ({
     </Card>
   );
 };
+
 export default TransactionsPieChart;
