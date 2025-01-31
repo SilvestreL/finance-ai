@@ -7,9 +7,16 @@ interface SumaryCard {
   title: string;
   amount: number;
   size?: "small" | "large";
+  userCanAddTransaction?: boolean;
 }
 
-const SumaryCard = ({ icon, title, amount, size = "small" }: SumaryCard) => {
+const SumaryCard = ({
+  icon,
+  title,
+  amount,
+  size = "small",
+  userCanAddTransaction = false,
+}: SumaryCard) => {
   return (
     <Card className={`${size === "large" ? "bg-white bg-opacity-5" : ""}`}>
       <CardHeader className="flex-row items-center gap-4">
@@ -29,7 +36,9 @@ const SumaryCard = ({ icon, title, amount, size = "small" }: SumaryCard) => {
             currency: "BRL",
           }).format(amount)}
         </p>
-        {size === "large" && <AddTransactionButton />}
+        {size === "large" && (
+          <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+        )}
       </CardContent>
     </Card>
   );
