@@ -14,7 +14,7 @@ Finance AI é um sistema de gestão financeira inteligente que ajuda usuários a
 - **Backend:** API Next.js, Prisma ORM
 - **Banco de Dados:** PostgreSQL (Neon)
 - **Deploy:** Vercel
-- **Autenticação:** NextAuth.js (se aplicável)
+- **Autenticação:** NextAuth.js with Clerk.
 
 ## ⚙️ Configuração do Projeto
 
@@ -64,6 +64,3 @@ Contribuições são bem-vindas! Para contribuir:
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
 ---
-
-Agora o **Finance AI** está documentado e pronto para colaborações e deploy! 🚀
-
