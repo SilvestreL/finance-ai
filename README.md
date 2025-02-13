@@ -8,6 +8,7 @@ Finance AI é um sistema de gestão financeira inteligente que ajuda usuários a
 - 🔄 Integração com banco de dados PostgreSQL (Neon)
 - 🌐 Interface responsiva desenvolvida em Next.js
 - 🔧 API backend para gerenciamento dos dados financeiros
+- Relatórios gerados mediante Inteligencia Artificial. 
 
 ## 🛠️ Tecnologias Utilizadas
 - **Frontend:** Next.js, React, Tailwind CSS
