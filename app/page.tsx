@@ -37,7 +37,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3">
-              <AiReportButton />
+              <AiReportButton month={month} />
               <TimeSelect />
             </div>
           </div>

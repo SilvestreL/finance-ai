@@ -2,6 +2,7 @@
 import { Button } from "@/app/_components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -13,7 +14,7 @@ import generateAiReport from "./_actions/generate-ai-report";
 import { useState } from "react";
 import { ScrollArea } from "@/app/_components/ui/scroll-area";
 import Markdown from "react-markdown";
-import { Loader2Icon } from "lucide-react";
+import { BotIcon, Loader2Icon } from "lucide-react";
 
 interface AiReportButtonProps {
   month: string;
@@ -36,23 +37,34 @@ const AiReportButton = ({ month }: AiReportButtonProps) => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="ghost">Relatório de IA</Button>
+    <Dialog
+      onOpenChange={(open) => {
+        if (!open) {
+          setReport(null);
+        }
+      }}
+    >
+      <DialogTrigger>
+        <Button variant="ghost">
+          <BotIcon />
+          Relatório de IA
+        </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-[600px]">
         <DialogHeader>
-          <DialogTitle>Relatõrio IA</DialogTitle>
+          <DialogTitle>Relatório IA</DialogTitle>
           <DialogDescription>
             Use inteligência artificial para gerar um relatório com insights
             sobre suas finanças.
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="prose prose-h3:text-white prose-h4:text-white prose-strong:text-white max-h-[450px] text-white">
+        <ScrollArea className="prose max-h-[450px] text-white prose-h3:text-white prose-h4:text-white prose-strong:text-white">
           <Markdown>{report}</Markdown>
         </ScrollArea>
         <DialogFooter>
-          <Button variant="ghost">Cancelar</Button>
+          <DialogClose asChild>
+            <Button variant="ghost">Cancelar</Button>
+          </DialogClose>
           <Button
             onClick={handleGenerateReportClick}
             disabled={reportIsLoading}
