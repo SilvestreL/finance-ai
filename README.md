@@ -1,67 +1,212 @@
-# 📊 Finance AI
+# Finance AI - Documentação Oficial
 
-Finance AI é um sistema de gestão financeira inteligente que ajuda usuários a controlar suas finanças pessoais, acompanhar transações e gerar relatórios analíticos. O projeto está desenvolvido com **Next.js**, **PostgreSQL (Neon)** e **Prisma ORM**.
+![Finance AI](https://your-image-url.com/logo.png)
 
-## 🚀 Recursos
-- 📌 Cadastro e gerenciamento de transações financeiras
-- 📊 Visualização de relatórios dinâmicos
-- 🔄 Integração com banco de dados PostgreSQL (Neon)
-- 🌐 Interface responsiva desenvolvida em Next.js
-- 🔧 API backend para gerenciamento dos dados financeiros
-- Relatórios gerados mediante Inteligencia Artificial. 
+**Um sistema financeiro inteligente com integração de IA, autenticação robusta e pagamentos via Stripe.**
+
+📍 **Repositório:** [Finance AI - GitHub](http://github.com/SilvestreL/finance-ai)
+
+---
+
+## 🚀 Visão Geral
+
+O **Finance AI** é um sistema financeiro moderno que combina **inteligência artificial**, **gestão de transações**, **autenticação segura** e **pagamentos recorrentes**. Ele foi desenvolvido com **Next.js (App Router)** e integra tecnologias como **Stripe, Clerk, Prisma, Docker, Webhooks, e Zod** para garantir uma experiência fluida e segura.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
-- **Frontend:** Next.js, React, Tailwind CSS
-- **Backend:** API Next.js, Prisma ORM
-- **Banco de Dados:** PostgreSQL (Neon)
-- **Deploy:** Vercel
-- **Autenticação:** NextAuth.js with Clerk.
 
-## ⚙️ Configuração do Projeto
+| Tecnologia                  | Descrição                                                          |
+| --------------------------- | ------------------------------------------------------------------ |
+| **Next.js 14 (App Router)** | Framework full-stack do React para SSR e otimização de performance |
+| **Next Auth & Clerk**       | Gerenciamento de autenticação de usuários e permissões             |
+| **Prisma ORM**              | Manipulação de banco de dados com TypeScript e PostgreSQL          |
+| **PostgreSQL**              | Banco de dados relacional escalável                                |
+| **Stripe**                  | Pagamentos online e assinatura recorrente                          |
+| **Zod**                     | Validação de dados tipados para segurança nas requisições          |
+| **ShadCN/UI**               | Componentes UI acessíveis e estilizados com Tailwind               |
+| **Docker**                  | Gerenciamento de ambientes e banco de dados via containers         |
+| **Webhooks**                | Comunicação assíncrona entre serviços externos                     |
+| **Tailwind CSS**            | Estilização moderna e responsiva                                   |
+| **Vercel**                  | Hospedagem otimizada para aplicações Next.js                       |
 
-### 1️⃣ **Clonar o Repositório**
+---
+
+## 🛠️ Configuração do Ambiente
+
+### 1️⃣ Clonar o repositório
+
 ```sh
-git clone https://github.com/SilvestreL/finance-ai.git
+git clone http://github.com/SilvestreL/finance-ai
 cd finance-ai
 ```
 
-### 2️⃣ **Instalar Dependências**
-```sh
-npm install
-```
+### 2️⃣ Criar e configurar o arquivo `.env.local`
 
-### 3️⃣ **Configurar Variáveis de Ambiente**
-Crie um arquivo `.env.local` na raiz do projeto e adicione:
 ```env
-DATABASE_URL="postgresql://usuario:senha@ep-seu-host.ap-south-1.aws.neon.tech/neon?sslmode=require"
+# Banco de Dados
+DATABASE_URL="postgresql://postgres:password@localhost:5433/finance-ai"
+
+# Stripe
+STRIPE_SECRET_KEY="sk_live_xxx"
+STRIPE_WEBHOOK_SECRET="whsec_xxx"
+
+# Clerk
+NEXT_PUBLIC_CLERK_FRONTEND_API="clerk.xxx"
+CLERK_SECRET_KEY="sk_xxx"
+
+# Configuração do NextAuth
+NEXTAUTH_SECRET="your_secret_key"
+
+# URL da aplicação
+APP_URL="https://your-deployed-app.vercel.app"
 ```
 
-### 4️⃣ **Rodar as Migrações do Prisma**
+### 3️⃣ Rodar o banco de dados via Docker
+
+```sh
+docker compose up -d
+```
+
+### 4️⃣ Aplicar as migrações do Prisma
+
 ```sh
 npx prisma migrate deploy
 ```
 
-### 5️⃣ **Iniciar o Servidor**
+### 5️⃣ Iniciar a aplicação
+
 ```sh
 npm run dev
 ```
-A aplicação rodará em `http://localhost:3000`.
-
-## 🚀 Deploy na Vercel com Neon
-1. **Criar uma conta no [Neon](https://neon.tech/)** e copiar a `DATABASE_URL`
-2. **Subir o projeto no GitHub** (`git push origin main`)
-3. **Fazer deploy na [Vercel](https://vercel.com/)**
-4. **Adicionar `DATABASE_URL` nas variáveis de ambiente da Vercel**
-5. **Rodar `npx prisma migrate deploy` na Vercel (se necessário)**
-
-## 🤝 Contribuição
-Contribuições são bem-vindas! Para contribuir:
-1. **Fork** o repositório
-2. Crie uma **branch** (`git checkout -b minha-feature`)
-3. Commit suas mudanças (`git commit -m 'Minha feature'`)
-4. Envie um **PR (Pull Request)**
-
-## 📜 Licença
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
 ---
+
+## 🔑 Autenticação com Clerk e NextAuth
+
+```tsx
+import { auth } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
+
+export function middleware(req) {
+  const { userId } = auth();
+  if (!userId) return NextResponse.redirect("/login");
+  return NextResponse.next();
+}
+```
+
+---
+
+## 💰 Pagamentos e Assinaturas com Stripe
+
+```tsx
+const session = await stripe.checkout.sessions.create({
+  success_url: `${process.env.APP_URL}/success`,
+  cancel_url: `${process.env.APP_URL}/cancel`,
+  line_items: [{ price: "price_xxx", quantity: 1 }],
+  mode: "subscription",
+});
+```
+
+---
+
+## 🔄 Webhooks
+
+```tsx
+import { buffer } from "micro";
+import Stripe from "stripe";
+
+export const config = { api: { bodyParser: false } };
+
+export default async function handler(req, res) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const sig = req.headers["stripe-signature"];
+
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(
+      await buffer(req),
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET,
+    );
+  } catch (err) {
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  if (event.type === "checkout.session.completed") {
+    console.log("Pagamento confirmado:", event.data.object);
+  }
+
+  res.json({ received: true });
+}
+```
+
+---
+
+## 🗄️ Banco de Dados com Prisma e PostgreSQL
+
+```prisma
+model Transaction {
+  id        String   @id @default(uuid())
+  userId    String
+  amount    Decimal
+  type      String
+  createdAt DateTime @default(now())
+}
+```
+
+```tsx
+const transactions = await prisma.transaction.findMany({
+  where: { userId: session.userId },
+  orderBy: { createdAt: "desc" },
+});
+```
+
+---
+
+## 🎨 UI Moderna com ShadCN e Tailwind
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="ghost" onClick={handleClick}>
+  Gerar Relatório
+</Button>;
+```
+
+---
+
+## 📊 Relatórios de IA com OpenAI
+
+```tsx
+const response = await fetch("https://api.openai.com/v1/completions", {
+  method: "POST",
+  headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+  body: JSON.stringify({
+    model: "gpt-4",
+    prompt: `Analise estas transações e sugira melhorias: ${JSON.stringify(transactions)}`,
+  }),
+});
+const data = await response.json();
+console.log("Sugestões da IA:", data.choices[0].text);
+```
+
+---
+
+## 🚀 Conclusão
+
+O **Finance AI** combina tecnologias modernas como **Next.js, Prisma, Stripe, Clerk, Webhooks e OpenAI** para criar um sistema financeiro inteligente, escalável e seguro.
+
+🔹 **Principais diferenciais:**
+
+- **Autenticação segura com Clerk**
+- **Pagamentos recorrentes via Stripe**
+- **Banco de dados com Prisma e PostgreSQL**
+- **Relatórios automáticos com OpenAI**
+- **Interface moderna com ShadCN e Tailwind**
+
+🎯 **Ideal para demonstrar em entrevistas e mostrar domínio de tecnologias avançadas.**
+
+---
+
+🔗 **Repositório:** [Finance AI - GitHub](http://github.com/SilvestreL/finance-ai)
