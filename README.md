@@ -1,7 +1,12 @@
 # Finance AI - Documentação Oficial
 
-![Finance AI](https://your-image-url.com/logo.png)
-
+![Finance AI]
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <img src="finance-ai/blob/main/public/telaInicial.png" alt="Imagem 1" width="300" style="margin: 10px;">
+  <img src="my-app/public/images/interface2.png" alt="Imagem 2" width="300" style="margin: 10px;">
+  <img src="my-app/public/images/interface3.png" alt="Imagem 3" width="300" style="margin: 10px;">
+  <img src="my-app/public/images/interface4.png" alt="Imagem 3" width="300" style="margin: 10px;">
+</div>
 **Um sistema financeiro inteligente com integração de IA, autenticação robusta e pagamentos via Stripe.**
 
 📍 **Repositório:** [Finance AI - GitHub](http://github.com/SilvestreL/finance-ai)
