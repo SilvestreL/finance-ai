@@ -2,7 +2,7 @@
 **Um sistema financeiro inteligente com integração de IA, autenticação robusta e pagamentos via Stripe.**
 
 ## Imagens do projeto
-<div style="display: grid; flex-wrap: wrap; justify-content: center; gap: 15px;">
+<div style="display: grid;">
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/telaInicial.png?raw=true" 
        alt="Tela Inicial" width="300" style="border-radius: 8px;">
        
