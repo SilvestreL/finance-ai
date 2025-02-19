@@ -2,7 +2,7 @@
 **Um sistema financeiro inteligente com integração de IA, autenticação robusta e pagamentos via Stripe.**
 
 ## Imagens do projeto
-<div style="display: grid;">
+<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/telaInicial.png?raw=true" 
        alt="Tela Inicial" width="300" style="border-radius: 8px;">
        
@@ -18,10 +18,8 @@
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/relatorio.ia.png?raw=true" 
        alt="Relatório IA" width="300" style="border-radius: 8px;">
 
-   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/criarTransacao?raw=true" 
+  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/criarTransacao.png?raw=true" 
        alt="Add transaction" width="300" style="border-radius: 8px;">
-
-       
 </div>
 
 
