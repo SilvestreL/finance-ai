@@ -15,7 +15,7 @@
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/stripe.png?raw=true" 
        alt="Stripe" width="300" style="border-radius: 8px;">
 
-  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/relatorio.ia.png?raw=true" 
+  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/Relatorio.IA.png?raw=true" 
        alt="Relatório IA" width="300" style="border-radius: 8px;">
 
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/criarTransacao.png?raw=true" 
