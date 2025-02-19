@@ -2,18 +2,26 @@
 **Um sistema financeiro inteligente com integração de IA, autenticação robusta e pagamentos via Stripe.**
 
 ## Imagens do projeto
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+<div style="display: grid; flex-wrap: wrap; justify-content: center; gap: 15px;">
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/telaInicial.png?raw=true" 
        alt="Tela Inicial" width="300" style="border-radius: 8px;">
        
-  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/interface2.png?raw=true" 
-       alt="Interface 2" width="300" style="border-radius: 8px;">
+  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/transacoes.png?raw=true" 
+       alt="Transactions" width="300" style="border-radius: 8px;">
        
-  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/interface3.png?raw=true" 
-       alt="Interface 3" width="300" style="border-radius: 8px;">
+  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/planos.png?raw=true" 
+       alt="Subscribe" width="300" style="border-radius: 8px;">
        
-  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/interface4.png?raw=true" 
-       alt="Interface 4" width="300" style="border-radius: 8px;">
+  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/stripe.png?raw=true" 
+       alt="Stripe" width="300" style="border-radius: 8px;">
+
+  <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/relatorio.ia.png?raw=true" 
+       alt="Relatório IA" width="300" style="border-radius: 8px;">
+
+   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/criarTransacao?raw=true" 
+       alt="Add transaction" width="300" style="border-radius: 8px;">
+
+       
 </div>
 
 
