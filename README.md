@@ -3,33 +3,31 @@
 
 ## Imagens do projeto
 <div style="
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 15px; 
-    justify-content: center; 
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    justify-items: center;
     max-width: 100%;
     margin: auto;
 ">
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/telaInicial.png?raw=true" 
-       alt="Tela Inicial" width="300" style="border-radius: 8px; flex-grow: 1;">
+       alt="Tela Inicial" width="300" style="border-radius: 8px;">
 
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/transacoes.png?raw=true" 
-       alt="Transactions" width="300" style="border-radius: 8px; flex-grow: 1;">
+       alt="Transactions" width="300" style="border-radius: 8px;">
 
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/planos.png?raw=true" 
-       alt="Subscribe" width="300" style="border-radius: 8px; flex-grow: 1;">
+       alt="Subscribe" width="300" style="border-radius: 8px;">
 
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/stripe.png?raw=true" 
-       alt="Stripe" width="300" style="border-radius: 8px; flex-grow: 1;">
+       alt="Stripe" width="300" style="border-radius: 8px;">
 
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/Relatorio.IA.png?raw=true" 
-       alt="Relatório IA" width="300" style="border-radius: 8px; flex-grow: 1;">
+       alt="Relatório IA" width="300" style="border-radius: 8px;">
 
   <img src="https://github.com/SilvestreL/finance-ai/blob/main/public/criarTransacao.png?raw=true" 
-       alt="Add transaction" width="300" style="border-radius: 8px; flex-grow: 1;">
+       alt="Add transaction" width="300" style="border-radius: 8px;">
 </div>
-
 
 ---
 
